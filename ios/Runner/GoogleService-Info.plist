@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>801381026380-pgpr0nc8bcbu76fu9o47e7bgb9vk1fag.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.801381026380-pgpr0nc8bcbu76fu9o47e7bgb9vk1fag</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBClT6hVqV9454Qfpt2VcqayX0y9W3aU58</string>
+	<key>GCM_SENDER_ID</key>
+	<string>801381026380</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.sunsetApp</string>
+	<key>PROJECT_ID</key>
+	<string>sunrise-954e0</string>
+	<key>STORAGE_BUCKET</key>
+	<string>sunrise-954e0.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:801381026380:ios:0ef6a4c05be424be8402e9</string>
+</dict>
+</plist>
