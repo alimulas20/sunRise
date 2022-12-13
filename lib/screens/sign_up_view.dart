@@ -4,8 +4,8 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sunset_app/core/extensions/color_extension.dart';
-import 'package:sunset_app/core/extensions/context_entension.dart';
+import 'package:sunset_app/core/color_extension.dart';
+import 'package:sunset_app/core/context_entension.dart';
 import 'package:sunset_app/providers/signin_provider.dart';
 import 'package:sunset_app/screens/main_page.dart';
 import 'package:sunset_app/utils/locale_keys.dart';
@@ -67,8 +67,6 @@ class _SignUpPageState extends State<SignUpPage> {
                 context.emptyLowMediumWidget,
                 const AlreadyAccount(),
                 context.emptyMediumWidget,
-
-
               ],
             ),
           ),

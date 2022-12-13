@@ -1,35 +1,34 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:sunset_app/core/extensions/color_extension.dart';
-import 'package:sunset_app/core/extensions/context_entension.dart';
+import 'package:sunset_app/core/color_extension.dart';
+import 'package:sunset_app/core/context_entension.dart';
 import 'package:sunset_app/utils/locale_keys.dart';
 
 class CustomTextfield extends StatefulWidget {
-
-  CustomTextfield({
-    Key? key,
-    this.hintText,
-    this.isPassword = false,
-    this.isHelper = false,
-    this.icon,
-    this.hintColor,
-    this.controller,
-    this.onSubmitted,
-    this.onChanged,
-    this.onTap,
-    this.onEditingComplete,
-    this.border = false,
-    this.backgroundColor = false,
-    this.textAlign = false,
-    this.readOnly = false,
-    required this.keyboardType,
-    this.minLines,
-    this.maxLines,
-    this.suffixIcon,
-    this.focusNode,
-    required this.autoFocus
-  }) : super(key: key);
+  CustomTextfield(
+      {Key? key,
+      this.hintText,
+      this.isPassword = false,
+      this.isHelper = false,
+      this.icon,
+      this.hintColor,
+      this.controller,
+      this.onSubmitted,
+      this.onChanged,
+      this.onTap,
+      this.onEditingComplete,
+      this.border = false,
+      this.backgroundColor = false,
+      this.textAlign = false,
+      this.readOnly = false,
+      required this.keyboardType,
+      this.minLines,
+      this.maxLines,
+      this.suffixIcon,
+      this.focusNode,
+      required this.autoFocus})
+      : super(key: key);
 
   final TextEditingController? controller;
   String? hintText;
@@ -84,8 +83,7 @@ class _CustomTextfieldState extends State<CustomTextfield> {
       decoration: InputDecoration(
         hintText: widget.hintText,
         hintStyle: TextStyle(color: widget.hintColor),
-        helperText:
-            widget.isHelper ? LocaleKeys.password_error_text : null,
+        helperText: widget.isHelper ? LocaleKeys.password_error_text : null,
         helperStyle: const TextStyle(
           fontSize: 14,
           fontFamily: 'Rubik',

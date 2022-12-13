@@ -1,6 +1,10 @@
-abstract class LocaleKeys{
+abstract class LocaleKeys {
   static const okey = "Tamam";
+  static const cancel = "İptal";
   static const wrong_username_password = "Kullanıcı Adı veya Parola Hatalı";
+  static const username_pasword_changed =
+      "Kullanıcı Adı veya Parolanız Değişmiş.";
+  static const logging_in_saved_user = "Kayıtlı Kullanıcı İle Giriş Yapılıyor.";
   static const check_net = 'İnternet bağlantınızı kontrol edin!';
   static const login = 'Giriş';
   static const or = 'veya';
@@ -25,11 +29,13 @@ abstract class LocaleKeys{
   static const what_is_your_mail = 'E-postanız nedir?';
   static const what_is_your_password = 'Parolanız nedir?';
   static const age = 'Yaşınız';
-  static const gender = 'Cinsietiniz';
+  static const gender = 'Cinsiyetiniz';
   static const surname = 'Soyadınız';
   static const sunrise = 'Gün Doğumu';
   static const sunset = 'Gün Batımı';
   static const location = 'Konumunuz :';
+  static const anasayfa =
+      'Konum butonu ile konum bilgilerinizi doldurabilirsiniz';
   static const latitude = 'Enlem :';
   static const longitude = 'Boylam :';
   static const hint = 'Konumunuz İçin Güneş Doğuş ve Batış Bilgileri: ';
@@ -38,11 +44,4 @@ abstract class LocaleKeys{
   static const search = 'Sorgula';
   static const named = 'adlı';
   static const logout = 'Çıkış Yap';
-
-
-
-
-
-
-
 }

@@ -125,8 +125,11 @@ class SignInProvider extends ChangeNotifier {
 
   Future userSignOut(BuildContext context) async {
     await FirebaseAuth.instance.signOut().then((value) {
-      afterUserSignOut().then((value) {
+      afterUserSignOut().then((value) async {
         nextScreenCloseOthers(context, LoginSignupPage());
+        final SharedPreferences prefs = await SharedPreferences.getInstance();
+        List<String> user = ["", "", ""];
+        prefs.setStringList("id", user);
       });
     });
   }

@@ -1,7 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:sunset_app/core/extensions/context_entension.dart';
+import 'package:sunset_app/core/context_entension.dart';
 
 import '../utils/navigate.dart';
 
@@ -36,20 +36,20 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
       toolbarHeight: kToolbarHeight,
       leading: backButton
           ? Row(
-        children: [
-          context.emptyMediumWidgetW,
-          GestureDetector(
-            onTap: onTap ??
-                    () {
-                  backScreen(context);
-                },
-            child: Icon(
-              Icons.arrow_back_sharp,
-              color: color,
-            ),
-          ),
-        ],
-      )
+              children: [
+                context.emptyMediumWidgetW,
+                GestureDetector(
+                  onTap: onTap ??
+                      () {
+                        backScreen(context);
+                      },
+                  child: Icon(
+                    Icons.arrow_back_sharp,
+                    color: color,
+                  ),
+                ),
+              ],
+            )
           : null,
       centerTitle: centerTitle,
       title: Text(

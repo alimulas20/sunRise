@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
-import 'package:sunset_app/core/extensions/color_extension.dart';
-import 'package:sunset_app/core/extensions/context_entension.dart';
+import 'package:sunset_app/core/color_extension.dart';
+import 'package:sunset_app/core/context_entension.dart';
 import 'package:sunset_app/providers/signin_provider.dart';
 import 'package:sunset_app/services/app_services.dart';
 import 'package:sunset_app/utils/locale_keys.dart';
 import 'package:sunset_app/widgets/custom_button.dart';
 import 'package:sunset_app/widgets/custom_textfield.dart';
 import 'package:sunset_app/widgets/dialogPopup.dart';
+
+import '../widgets/custom_appbar.dart';
 
 class ExplorePage extends StatefulWidget {
   const ExplorePage({Key? key}) : super(key: key);
@@ -24,12 +26,7 @@ late String sunRise;
 late String sunSet;
 bool _isClicked = false;
 
-
-
 class _ExplorePageState extends State<ExplorePage> {
-
-
-
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -41,31 +38,44 @@ class _ExplorePageState extends State<ExplorePage> {
           fit: BoxFit.cover,
         ),
         Scaffold(
+          appBar: CustomAppbar(
+              title: "Anasayfa", centerTitle: true, backButton: false),
           backgroundColor: Colors.transparent,
-          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerFloat,
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(LocaleKeys.latitude, style: TextStyle(fontSize: context.mediumValue)),
+                Text(LocaleKeys.latitude,
+                    style: TextStyle(
+                        fontSize: context.mediumValue,
+                        color: context.colors.primaryColor)),
                 Container(
                     decoration: BoxDecoration(
                         color: context.colors.backgroundDialog,
-                        borderRadius: BorderRadius.circular(context.mediumValue)
-                    ),
+                        borderRadius:
+                            BorderRadius.circular(context.mediumValue)),
                     width: context.width * 0.5,
                     height: context.height * 0.05,
-                    child: Center(child: Text(_isClicked ? lat.toString() : " " , style: TextStyle(fontSize: context.mediumValue)))),
+                    child: Center(
+                        child: Text(_isClicked ? lat.toString() : " ",
+                            style: TextStyle(fontSize: context.mediumValue)))),
                 context.emptyMediumWidget,
-                Text(LocaleKeys.longitude, style: TextStyle(fontSize: context.mediumValue)),
+                Text(LocaleKeys.longitude,
+                    style: TextStyle(
+                        fontSize: context.mediumValue,
+                        color: context.colors.primaryColor)),
                 Container(
                     decoration: BoxDecoration(
                         color: context.colors.backgroundDialog,
-                        borderRadius: BorderRadius.circular(context.mediumValue)
-                    ),
+                        borderRadius:
+                            BorderRadius.circular(context.mediumValue)),
                     width: context.width * 0.5,
                     height: context.height * 0.05,
-                    child: Center(child: Text(_isClicked ? long.toString() : " ",  style: TextStyle(fontSize: context.mediumValue)))),
+                    child: Center(
+                        child: Text(_isClicked ? long.toString() : " ",
+                            style: TextStyle(fontSize: context.mediumValue)))),
                 context.emptyHighWidget,
                 Visibility(
                   visible: _isClicked ? true : false,
@@ -105,7 +115,6 @@ class _ExplorePageState extends State<ExplorePage> {
           resizeToAvoidBottomInset: false,
           extendBody: true,
         ),
-
       ],
     );
   }

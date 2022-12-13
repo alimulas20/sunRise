@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sunset_app/core/extensions/color_extension.dart';
-import 'package:sunset_app/core/extensions/context_entension.dart';
+import 'package:sunset_app/core/color_extension.dart';
+import 'package:sunset_app/core/context_entension.dart';
 import 'package:sunset_app/utils/locale_keys.dart';
 
 errorAlert(BuildContext context, errorMessage) {
@@ -35,8 +35,11 @@ errorAlert(BuildContext context, errorMessage) {
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
-                  height: context.height*0.1,
-                  child: Image.asset('assets/cross.png', fit: BoxFit.fitHeight,)),
+                  height: context.height * 0.1,
+                  child: Image.asset(
+                    'assets/cross.png',
+                    fit: BoxFit.fitHeight,
+                  )),
               context.emptyMediumHighWidget,
               Text(
                 errorMessage ?? "",
@@ -55,9 +58,7 @@ errorAlert(BuildContext context, errorMessage) {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
-                    width: context.width*0.5,
-                    child: closeButton),
+                SizedBox(width: context.width * 0.5, child: closeButton),
               ],
             )
           ],

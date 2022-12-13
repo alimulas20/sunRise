@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:sunset_app/core/extensions/color_extension.dart';
-import 'package:sunset_app/core/extensions/context_entension.dart';
+import 'package:sunset_app/core/color_extension.dart';
+import 'package:sunset_app/core/context_entension.dart';
 import 'package:sunset_app/providers/signin_provider.dart';
 import 'package:sunset_app/services/app_services.dart';
 import 'package:sunset_app/utils/locale_keys.dart';
@@ -9,11 +10,8 @@ import 'package:sunset_app/utils/navigate.dart';
 import 'package:sunset_app/utils/toast.dart';
 import 'package:sunset_app/widgets/custom_textfield.dart';
 
-
-
-
 detailPopup(BuildContext context, double? lat, double? long, String? sunRise,
-    String? sunSet, String? locName) {
+    String? sunSet, String? locName, String? date) {
   Widget closeButton = ElevatedButton(
     style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
@@ -59,14 +57,31 @@ detailPopup(BuildContext context, double? lat, double? long, String? sunRise,
                 children: const [
                   Expanded(
                       child:
-                      Text(LocaleKeys.hint, textAlign: TextAlign.center)),
+                          Text(LocaleKeys.hint, textAlign: TextAlign.center)),
                 ],
               ),
               context.emptyMediumWidget,
-              Text(LocaleKeys.sunrise + sunRise.toString()),
-              Text(LocaleKeys.sunset + sunSet.toString()),
-              context.emptyHighWidget,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  const Text("${LocaleKeys.sunrise}:"),
+                  Text(sunRise.toString())
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  const Text("${LocaleKeys.sunset}:"),
+                  Text(sunSet.toString())
+                ],
+              ),
+              context.emptyMediumWidget,
+              Text(DateFormat()
+                  .add_yMd()
+                  .add_jm()
+                  .format(DateTime.parse(date.toString()))),
 
+              context.emptyHighWidget,
             ],
           ),
           titlePadding: const EdgeInsets.all(0),
@@ -81,6 +96,3 @@ detailPopup(BuildContext context, double? lat, double? long, String? sunRise,
         );
       });
 }
-
-
-

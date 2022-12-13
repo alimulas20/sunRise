@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
-import 'package:sunset_app/core/extensions/color_extension.dart';
-import 'package:sunset_app/core/extensions/context_entension.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sunset_app/core/color_extension.dart';
+import 'package:sunset_app/core/context_entension.dart';
 import 'package:sunset_app/providers/signin_provider.dart';
 import 'package:sunset_app/screens/main_page.dart';
 import 'package:sunset_app/services/app_services.dart';
@@ -37,11 +38,11 @@ class _LoginPageState extends State<LoginPage> {
   var scaffoldKey = GlobalKey<ScaffoldState>();
 
   final RoundedLoadingButtonController _loginController =
-  RoundedLoadingButtonController();
+      RoundedLoadingButtonController();
 
   handleSignInEmailPassword() async {
     final SignInProvider sp =
-    Provider.of<SignInProvider>(context, listen: false);
+        Provider.of<SignInProvider>(context, listen: false);
     sp.signInWithEmailPassword(useridentifier, password).then((value) async {
       if (value) {
         sp
@@ -51,6 +52,13 @@ class _LoginPageState extends State<LoginPage> {
         setState(() {
           isLoading = false;
         });
+        final SharedPreferences prefs = await SharedPreferences.getInstance();
+        List<String> user = [
+          useridentifier,
+          password,
+          DateTime.now().toString()
+        ];
+        prefs.setStringList("id", user);
         handleAfterSignIn();
       } else {
         errorAlert(context, LocaleKeys.wrong_username_password);
@@ -61,6 +69,7 @@ class _LoginPageState extends State<LoginPage> {
       }
     });
   }
+
   handleAfterSignIn() {
     setState(() {
       Future.delayed(const Duration(milliseconds: 1000)).then((f) {
@@ -72,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final SignInProvider sp =
-    Provider.of<SignInProvider>(context, listen: false);
+        Provider.of<SignInProvider>(context, listen: false);
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: context.colors.backgroundSecondary,
@@ -141,28 +150,28 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: () {},
                   child: !isLoading
                       ? CustomButton(
-                    textColor: context.colors.buttonPrimaryText,
-                    backgroundColor: context.colors.buttonPrimary,
-                    text: LocaleKeys.login,
-                    onTap: () {
-                      // nextScreen(context, MainPage());
-                      setState(() {
-                        isLoading = true;
-                      });
-                      if (useridentifier == "" || password == "") {
-                        errorAlert(context, LocaleKeys.empty_area);
-                        setState(() {
-                          isLoading = false;
-                        });
-                      } else {
-                        handleSignInEmailPassword();
-                      }
-                    },
-                  )
+                          textColor: context.colors.buttonPrimaryText,
+                          backgroundColor: context.colors.buttonPrimary,
+                          text: LocaleKeys.login,
+                          onTap: () {
+                            // nextScreen(context, MainPage());
+                            setState(() {
+                              isLoading = true;
+                            });
+                            if (useridentifier == "" || password == "") {
+                              errorAlert(context, LocaleKeys.empty_area);
+                              setState(() {
+                                isLoading = false;
+                              });
+                            } else {
+                              handleSignInEmailPassword();
+                            }
+                          },
+                        )
                       : Center(
-                      child: CircularProgressIndicator(
-                        color: context.colors.whiteColor,
-                      )),
+                          child: CircularProgressIndicator(
+                          color: context.colors.whiteColor,
+                        )),
                 ),
 
                 context.emptyMediumWidget,

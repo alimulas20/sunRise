@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sunset_app/core/extensions/color_extension.dart';
-import 'package:sunset_app/core/extensions/context_entension.dart';
+import 'package:sunset_app/core/color_extension.dart';
+import 'package:sunset_app/core/context_entension.dart';
 import 'package:sunset_app/providers/signin_provider.dart';
 import 'package:sunset_app/services/app_services.dart';
 import 'package:sunset_app/utils/locale_keys.dart';
@@ -46,61 +46,75 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             context.emptyMediumWidget,
             Text(LocaleKeys.what_is_your_name,
-                style: TextStyle(fontSize: context.mediumValue, color: context.colors.backgroundDialog)),
+                style: TextStyle(
+                    fontSize: context.mediumValue,
+                    color: context.colors.backgroundDialog)),
             Container(
                 decoration: BoxDecoration(
-                  color: context.colors.backgroundDialog,
-                  borderRadius: BorderRadius.circular(context.mediumValue)
-                ),
+                    color: context.colors.backgroundDialog,
+                    borderRadius: BorderRadius.circular(context.mediumValue)),
                 width: context.width * 0.5,
                 height: context.height * 0.05,
                 child: Center(
-                    child: Text(sp.name.toString(),
-                        style: TextStyle(fontSize: context.mediumValue, color: context.colors.softRedColor)))),
+                    child: Text(
+                        sp.name.toString()[0].toUpperCase() +
+                            sp.name.toString().substring(1).toLowerCase(),
+                        style: TextStyle(
+                            fontSize: context.mediumValue,
+                            color: context.colors.softRedColor)))),
             context.emptyLowWidget,
             Text(LocaleKeys.surname,
-                style: TextStyle(fontSize: context.mediumValue, color: context.colors.backgroundDialog)),
+                style: TextStyle(
+                    fontSize: context.mediumValue,
+                    color: context.colors.backgroundDialog)),
             Container(
                 decoration: BoxDecoration(
                     color: context.colors.backgroundDialog,
-                    borderRadius: BorderRadius.circular(context.mediumValue)
-                ),
+                    borderRadius: BorderRadius.circular(context.mediumValue)),
                 width: context.width * 0.5,
                 height: context.height * 0.05,
                 child: Center(
-                    child: Text(sp.surname.toString(),
-                        style: TextStyle(fontSize: context.mediumValue, color: context.colors.softRedColor)))),
+                    child: Text(sp.surname.toString().toUpperCase(),
+                        style: TextStyle(
+                            fontSize: context.mediumValue,
+                            color: context.colors.softRedColor)))),
             context.emptyLowWidget,
             Text(LocaleKeys.age,
-                style: TextStyle(fontSize: context.mediumValue, color: context.colors.backgroundDialog)),
+                style: TextStyle(
+                    fontSize: context.mediumValue,
+                    color: context.colors.backgroundDialog)),
             Container(
                 decoration: BoxDecoration(
                     color: context.colors.backgroundDialog,
-                    borderRadius: BorderRadius.circular(context.mediumValue)
-                ),
+                    borderRadius: BorderRadius.circular(context.mediumValue)),
                 width: context.width * 0.5,
                 height: context.height * 0.05,
                 child: Center(
                     child: Text(sp.age.toString(),
-                        style: TextStyle(fontSize: context.mediumValue, color: context.colors.softRedColor)))),
+                        style: TextStyle(
+                            fontSize: context.mediumValue,
+                            color: context.colors.softRedColor)))),
             context.emptyLowWidget,
             Text(LocaleKeys.gender,
-                style: TextStyle(fontSize: context.mediumValue, color: context.colors.backgroundDialog)),
+                style: TextStyle(
+                    fontSize: context.mediumValue,
+                    color: context.colors.backgroundDialog)),
             Container(
                 decoration: BoxDecoration(
                     color: context.colors.backgroundDialog,
-                    borderRadius: BorderRadius.circular(context.mediumValue)
-                ),
+                    borderRadius: BorderRadius.circular(context.mediumValue)),
                 width: context.width * 0.5,
                 height: context.height * 0.05,
                 child: Center(
                     child: Text(sp.gender.toString(),
-                        style: TextStyle(fontSize: context.mediumValue, color: context.colors.softRedColor)))),
+                        style: TextStyle(
+                            fontSize: context.mediumValue,
+                            color: context.colors.softRedColor)))),
             context.emptyHighWidget,
             SizedBox(
-              width: context.width*0.5,
+              width: context.width * 0.5,
               child: CustomButton(
-                backgroundColor: context.colors.backgroundDialog,
+                  backgroundColor: context.colors.backgroundDialog,
                   textColor: context.colors.orangeColor,
                   text: LocaleKeys.logout,
                   onTap: () {

@@ -3,8 +3,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
-import 'package:sunset_app/core/extensions/color_extension.dart';
-import 'package:sunset_app/core/extensions/context_entension.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sunset_app/core/color_extension.dart';
+import 'package:sunset_app/core/context_entension.dart';
 import 'package:sunset_app/providers/signin_provider.dart';
 import 'package:sunset_app/screens/main_page.dart';
 import 'package:sunset_app/utils/locale_keys.dart';
@@ -43,7 +44,6 @@ class _SignupMailPageState extends State<SignupMailPage> {
   List<String> genderList = [
     'Erkek',
     'Kadın',
-    // 'School Manager'
   ];
 
   @override
@@ -64,6 +64,9 @@ class _SignupMailPageState extends State<SignupMailPage> {
         .then((value) async {
       if (value) {
         nextScreenCloseOthers(context, const HomePage());
+        final SharedPreferences prefs = await SharedPreferences.getInstance();
+        List<String> user = [email, password, DateTime.now().toString()];
+        prefs.setStringList("id", user);
       } else {
         errorAlert(context, sp.errorCode);
       }

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sunset_app/core/extensions/color_extension.dart';
-import 'package:sunset_app/core/extensions/context_entension.dart';
+import 'package:sunset_app/core/color_extension.dart';
+import 'package:sunset_app/core/context_entension.dart';
 import 'package:sunset_app/utils/locale_keys.dart';
 import 'package:sunset_app/utils/navigate.dart';
-
 
 class CustomButton extends StatelessWidget {
   final String text;
@@ -58,14 +57,8 @@ class CustomButton extends StatelessWidget {
                   fontFamily: 'Rubik',
                   fontSize: 16,
                   color: textColor ??
-                      (Theme
-                          .of(context)
-                          .brightness == Brightness.dark
-                          ? Theme
-                          .of(context)
-                          .textTheme
-                          .headline6!
-                          .color
+                      (Theme.of(context).brightness == Brightness.dark
+                          ? Theme.of(context).textTheme.headline6!.color
                           : context.colors.whiteColor),
                   fontWeight: FontWeight.w500,
                 ),
@@ -78,5 +71,3 @@ class CustomButton extends StatelessWidget {
     );
   }
 }
-
-
